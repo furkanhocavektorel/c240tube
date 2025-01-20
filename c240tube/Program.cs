@@ -1,4 +1,8 @@
 
+using c240tube.context;
+using c240tube.service.abstracts;
+using c240tube.service.concrete;
+
 namespace c240tube
 {
     public class Program
@@ -12,6 +16,11 @@ namespace c240tube
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<C240tubeContext>();
+            builder.Services.AddScoped<IAuthService,AuthService>();
+
+
 
             var app = builder.Build();
 
