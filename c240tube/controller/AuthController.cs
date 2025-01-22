@@ -1,4 +1,6 @@
-﻿using c240tube.service.abstracts;
+﻿using c240tube.dto;
+using c240tube.entity;
+using c240tube.service.abstracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace c240tube.controller
@@ -15,10 +17,17 @@ namespace c240tube.controller
             _authService = authService;
         }
 
-        [HttpPost]
-        public void save(string email, string password, string role)
+        // DTO 
+        [HttpPost("save")]
+        public void save([FromBody]AuthSaveRequestDto dto)
         {
-            _authService.save(email, password, role);
+            _authService.save(dto);
+        }
+
+        [HttpGet("by-mail")]
+        public AuthResponseDto getAuthByMail(string mail)
+        {
+            return _authService.getAuthByEmailResponse(mail);
         }
 
 

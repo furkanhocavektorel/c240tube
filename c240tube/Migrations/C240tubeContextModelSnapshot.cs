@@ -34,8 +34,6 @@ namespace c240tube.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreateAt")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -69,8 +67,6 @@ namespace c240tube.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreateAt")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -112,8 +108,6 @@ namespace c240tube.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreateAt")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -155,8 +149,6 @@ namespace c240tube.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreateAt")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -186,8 +178,6 @@ namespace c240tube.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreateAt")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")

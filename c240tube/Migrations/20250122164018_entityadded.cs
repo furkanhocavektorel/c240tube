@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace c240tube.Migrations
 {
     /// <inheritdoc />
-    public partial class ilkmigration : Migration
+    public partial class entityadded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace c240tube.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", rowVersion: true, nullable: false)
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,7 +39,7 @@ namespace c240tube.Migrations
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     like = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", rowVersion: true, nullable: false)
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@ namespace c240tube.Migrations
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthId = table.Column<long>(type: "bigint", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", rowVersion: true, nullable: false)
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,7 +82,7 @@ namespace c240tube.Migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthId = table.Column<long>(type: "bigint", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", rowVersion: true, nullable: false)
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,7 +108,7 @@ namespace c240tube.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     AuthId = table.Column<long>(type: "bigint", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", rowVersion: true, nullable: false)
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

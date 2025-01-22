@@ -19,8 +19,8 @@ namespace c240tube
 
             builder.Services.AddScoped<C240tubeContext>();
             builder.Services.AddScoped<IAuthService,AuthService>();
-
-
+            builder.Services.AddScoped<IStreamerService,StreamerService>();
+            builder.Services.AddScoped<IAdminService,AdminService>();
 
             var app = builder.Build();
 
