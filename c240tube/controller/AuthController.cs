@@ -1,4 +1,5 @@
-﻿using c240tube.dto;
+﻿using c240tube.dto.request;
+using c240tube.dto.response;
 using c240tube.entity;
 using c240tube.service.abstracts;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,8 @@ namespace c240tube.controller
         [HttpPost("save")]
         public void save([FromBody]AuthSaveRequestDto dto)
         {
-            _authService.save(dto);
+
+                _authService.save(dto);
         }
 
         [HttpGet("by-mail")]

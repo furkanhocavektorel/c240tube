@@ -1,4 +1,4 @@
-﻿namespace c240tube.dto
+﻿namespace c240tube.dto.response
 {
     public class AuthResponseDto
     {

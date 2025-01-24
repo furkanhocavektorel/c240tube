@@ -1,4 +1,5 @@
-﻿using c240tube.dto;
+﻿using c240tube.dto.request;
+using c240tube.dto.response;
 using c240tube.entity;
 
 namespace c240tube.service.abstracts

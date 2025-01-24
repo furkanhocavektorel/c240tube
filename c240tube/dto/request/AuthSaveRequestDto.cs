@@ -1,4 +1,4 @@
-﻿namespace c240tube.dto
+﻿namespace c240tube.dto.request
 {
     public class AuthSaveRequestDto
     {

@@ -1,5 +1,6 @@
 ﻿using c240tube.context;
-using c240tube.dto;
+using c240tube.dto.request;
+using c240tube.dto.response;
 using c240tube.entity;
 using c240tube.entity.enums;
 using c240tube.service.abstracts;
@@ -11,20 +12,18 @@ namespace c240tube.service.concrete
 
 
         private C240tubeContext _context;
+
         private IStreamerService _streamerService;
         private IAdminService _adminService;
+        private ICustomerService _customerService;
 
-
-        public AuthService(C240tubeContext context, IStreamerService streamerService, IAdminService adminService)
+        public AuthService(ICustomerService customerService, C240tubeContext context, IStreamerService streamerService, IAdminService adminService)
         {
             _context = context;
             _streamerService = streamerService;
             _adminService = adminService;
+            _customerService = customerService;
         }
-
-
-
-
 
         public void save(AuthSaveRequestDto dto)
         {
@@ -50,18 +49,18 @@ namespace c240tube.service.concrete
             if (dto.role.Equals("ADMIN"))
             {
                 _adminService.save(dto.name, dto.surname, dto.phone, ekliAuth);
-
-            }else if (dto.role.Equals("STREAMER"))
+            }
+            else if (dto.role.Equals("STREAMER"))
             {
                 _streamerService.save(dto.name, dto.phone, ekliAuth);
 
+            }else if (dto.role.Equals("CUSTOMER"))
+            {
+                _customerService.save(dto.name,dto.phone, ekliAuth);
             }
 
-
-
-
-
         }
+
 
         public Auth getAuthByEmail(string mail)
         {

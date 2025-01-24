@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using c240tube.context;
 
@@ -11,9 +12,11 @@ using c240tube.context;
 namespace c240tube.Migrations
 {
     [DbContext(typeof(C240tubeContext))]
-    partial class C240tubeContextModelSnapshot : ModelSnapshot
+    [Migration("20250124163541_firstmig")]
+    partial class firstmig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,9 +187,6 @@ namespace c240tube.Migrations
                     b.Property<double>("Range")
                         .HasColumnType("float");
 
-                    b.Property<long>("StreamerId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -199,8 +199,6 @@ namespace c240tube.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StreamerId");
 
                     b.ToTable("Video");
                 });
@@ -236,17 +234,6 @@ namespace c240tube.Migrations
                         .IsRequired();
 
                     b.Navigation("Auth");
-                });
-
-            modelBuilder.Entity("c240tube.entity.Video", b =>
-                {
-                    b.HasOne("c240tube.entity.Streamer", "Streamer")
-                        .WithMany()
-                        .HasForeignKey("StreamerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Streamer");
                 });
 #pragma warning restore 612, 618
         }
