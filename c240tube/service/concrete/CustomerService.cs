@@ -13,6 +13,10 @@ namespace c240tube.service.concrete
             _context = context;
         }
 
+        public Customer? getById(long id)
+        {
+            return _context.Customer.Find(id);    
+        }
 
         public void save(string name, string phone, Auth auth)
         {
@@ -25,5 +29,8 @@ namespace c240tube.service.concrete
             _context.SaveChanges();
             
         }
+
+
+
     }
 }

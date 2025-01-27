@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace c240tube.Migrations
 {
     /// <inheritdoc />
-    public partial class firstmig : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,21 +29,22 @@ namespace c240tube.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Video",
+                name: "Comment",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Range = table.Column<double>(type: "float", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    like = table.Column<int>(type: "int", nullable: false),
+                    CustomerId = table.Column<long>(type: "bigint", nullable: false),
+                    VideoId = table.Column<long>(type: "bigint", nullable: false),
+                    Like = table.Column<int>(type: "int", nullable: false),
+                    Dislike = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Video", x => x.Id);
+                    table.PrimaryKey("PK_Comment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,6 +122,32 @@ namespace c240tube.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Video",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StreamerId = table.Column<long>(type: "bigint", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Range = table.Column<double>(type: "float", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Like = table.Column<int>(type: "int", nullable: false),
+                    Dislike = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Video", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Video_Streamer_StreamerId",
+                        column: x => x.StreamerId,
+                        principalTable: "Streamer",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_AuthId",
                 table: "Admin",
@@ -135,6 +162,11 @@ namespace c240tube.Migrations
                 name: "IX_Streamer_AuthId",
                 table: "Streamer",
                 column: "AuthId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Video_StreamerId",
+                table: "Video",
+                column: "StreamerId");
         }
 
         /// <inheritdoc />
@@ -144,13 +176,16 @@ namespace c240tube.Migrations
                 name: "Admin");
 
             migrationBuilder.DropTable(
+                name: "Comment");
+
+            migrationBuilder.DropTable(
                 name: "Customer");
 
             migrationBuilder.DropTable(
-                name: "Streamer");
+                name: "Video");
 
             migrationBuilder.DropTable(
-                name: "Video");
+                name: "Streamer");
 
             migrationBuilder.DropTable(
                 name: "Auths");

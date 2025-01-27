@@ -6,6 +6,7 @@ namespace c240tube.service.abstracts
     {
 
         void save(string name,string phone,Auth auth);
+        Customer? getById(long id);
 
     }
 }

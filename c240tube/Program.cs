@@ -16,13 +16,16 @@ namespace c240tube
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen();
-
+            #region container
             builder.Services.AddScoped<C240tubeContext>();
             builder.Services.AddScoped<IAuthService,AuthService>();
             builder.Services.AddScoped<IStreamerService,StreamerService>();
             builder.Services.AddScoped<IAdminService,AdminService>();
             builder.Services.AddScoped<ICustomerService,CustomerService>();
             builder.Services.AddScoped<IVideoService,VideoService>();
+            builder.Services.AddScoped<ICommentService,CommentService>();
+            #endregion
+
 
             var app = builder.Build();
 

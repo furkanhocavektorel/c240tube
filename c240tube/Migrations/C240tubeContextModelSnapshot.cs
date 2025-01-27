@@ -88,6 +88,41 @@ namespace c240tube.Migrations
                     b.ToTable("Auths");
                 });
 
+            modelBuilder.Entity("c240tube.entity.Comment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Dislike")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Like")
+                        .HasColumnType("int");
+
+                    b.Property<long>("VideoId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("c240tube.entity.Customer", b =>
                 {
                     b.Property<long>("Id")
@@ -178,8 +213,14 @@ namespace c240tube.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Dislike")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Like")
+                        .HasColumnType("int");
 
                     b.Property<double>("Range")
                         .HasColumnType("float");
@@ -194,9 +235,6 @@ namespace c240tube.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("like")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

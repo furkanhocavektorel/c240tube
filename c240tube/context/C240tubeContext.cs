@@ -16,5 +16,7 @@ namespace c240tube.context
         public DbSet<Video> Video { get; set; }
         public DbSet<Streamer> Streamer { get; set; }
 
+        public DbSet<Comment> Comment { get; set; }
+
     }
 }

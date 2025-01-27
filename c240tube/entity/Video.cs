@@ -8,11 +8,12 @@
 
         public double Range { get; set; }
         public string Url { get; set; }
-        public int like { get; set; }
+        public int Like { get; set; }
+        public int Dislike { get; set; }
 
         public Video()
         {
-            like = 0;
+            Like = 0;
         }
 
     }
