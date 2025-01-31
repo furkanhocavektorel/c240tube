@@ -2,6 +2,7 @@
 using c240tube.context;
 using c240tube.service.abstracts;
 using c240tube.service.concrete;
+using c240tube.utilty;
 
 namespace c240tube
 {
@@ -24,6 +25,7 @@ namespace c240tube
             builder.Services.AddScoped<ICustomerService,CustomerService>();
             builder.Services.AddScoped<IVideoService,VideoService>();
             builder.Services.AddScoped<ICommentService,CommentService>();
+            builder.Services.AddScoped<JwtManager>();
             #endregion
 
 

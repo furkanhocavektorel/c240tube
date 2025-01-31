@@ -1,6 +1,7 @@
 ﻿using c240tube.context;
 using c240tube.entity;
 using c240tube.service.abstracts;
+using ClassLibrary2;
 
 namespace c240tube.service.concrete
 {
@@ -19,7 +20,10 @@ namespace c240tube.service.concrete
         public void save(string name, string surname, string phone, Auth auth)
         {
             
-         
+            TestC c = new TestC();
+
+
+
             if (surname == null)
             {
                 throw new Exception("soy adi girilmeli ");

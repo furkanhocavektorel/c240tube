@@ -26,12 +26,20 @@ namespace c240tube.controller
                 _authService.save(dto);
         }
 
+
         [HttpGet("by-mail")]
-        public AuthResponseDto getAuthByMail(string mail)
+        public AuthResponseDto getAuthByMail(string mail,string token)
         {
-            return _authService.getAuthByEmailResponse(mail);
+            return _authService.getAuthByEmailResponse(mail,token);
         }
 
+
+
+        [HttpPost("login")]
+        public LoginResponseDto login([FromBody]LoginRequestDto request)
+        {
+            return _authService.login(request);
+        }
 
 
 

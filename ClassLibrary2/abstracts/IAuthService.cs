@@ -8,9 +8,9 @@ namespace c240tube.service.abstracts
     {
         public void save(AuthSaveRequestDto dto);
         Auth getAuthByEmail(string mail);
-        AuthResponseDto getAuthByEmailResponse(string email,string token);
+        AuthResponseDto getAuthByEmailResponse(string email);
 
-        LoginResponseDto login(LoginRequestDto dto);
+        bool login(LoginRequestDto dto);
 
     }
 }

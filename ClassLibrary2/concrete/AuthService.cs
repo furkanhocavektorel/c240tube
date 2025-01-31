@@ -4,7 +4,6 @@ using c240tube.dto.response;
 using c240tube.entity;
 using c240tube.entity.enums;
 using c240tube.service.abstracts;
-using c240tube.utilty;
 
 namespace c240tube.service.concrete
 {
@@ -17,16 +16,13 @@ namespace c240tube.service.concrete
         private IStreamerService _streamerService;
         private IAdminService _adminService;
         private ICustomerService _customerService;
-        private JwtManager _jwtManager;
 
-
-        public AuthService(ICustomerService customerService, C240tubeContext context, IStreamerService streamerService, IAdminService adminService, JwtManager jwtManager)
+        public AuthService(ICustomerService customerService, C240tubeContext context, IStreamerService streamerService, IAdminService adminService)
         {
             _context = context;
             _streamerService = streamerService;
             _adminService = adminService;
             _customerService = customerService;
-            _jwtManager = jwtManager;
         }
 
         public void save(AuthSaveRequestDto dto)
@@ -76,22 +72,8 @@ namespace c240tube.service.concrete
         }
 
 
-        public AuthResponseDto getAuthByEmailResponse(string email,string token)
+        public AuthResponseDto getAuthByEmailResponse(string email)
         {
-            long id = long.Parse(_jwtManager.ValidateToken(token));
-
-            Auth a = _context.Auths.FirstOrDefault(x=> x.Id==id);
-
-            if (a == null)
-            {
-                throw new Exception("auth bulunamadi");
-            }
-
-            if (!a.Role.Equals("Admin"))
-            {
-                throw new Exception("yetkiniz yok");
-            }
-
             Auth? auth = _context.Auths
                 .FirstOrDefault(x => x.Email.Equals(email));
 
@@ -109,7 +91,7 @@ namespace c240tube.service.concrete
 
         }
 
-        public LoginResponseDto login(LoginRequestDto dto)
+        public bool login(LoginRequestDto dto)
         {
             Auth auth = _context.Auths
                 .FirstOrDefault(x => x.Email.Equals(dto.email));
@@ -124,9 +106,7 @@ namespace c240tube.service.concrete
             {
                 throw new Exception("Yanlis Sifre");
             }
-            LoginResponseDto responseDto = new LoginResponseDto();
-            responseDto.token = _jwtManager.CreateToken(auth.Id);
-            return responseDto;
+            return true;
             
             
         }

@@ -12,7 +12,7 @@ using c240tube.context;
 namespace c240tube.Migrations
 {
     [DbContext(typeof(C240tubeContext))]
-    [Migration("20250127163408_first")]
+    [Migration("20250131160513_first")]
     partial class first
     {
         /// <inheritdoc />
